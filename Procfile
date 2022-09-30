@@ -1,0 +1,1 @@
+web: gunicorn login_and_registration.wsgi --log-file -

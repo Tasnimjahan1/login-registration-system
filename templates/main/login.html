@@ -1,0 +1,31 @@
+{% extends "main/header.html" %}
+
+{% block content %}
+
+{% load crispy_forms_tags %}
+
+<!--Login-->
+<div class="container py-5">
+{% if messages %}
+			{% for message in messages %}
+				{% if message.tags == 'success' %}
+					<div class="alert alert-success" role="alert">
+						<span>{{message}}</span>
+					</div>
+				{% elif message.tags == 'error' %}
+					<div class="alert alert-danger" role="alert">
+						<span>{{message}}</span>
+					</div>
+				{% endif %}
+			{% endfor %}
+		{% endif %}
+  <h1>Login</h1>
+  <form method="POST">
+    {% csrf_token %}
+    {{ login_form|crispy }}
+    <button class="btn btn-primary" type="submit">Login</button>
+  </form>
+  <p class="text-center">Don't have an account? <a href="/register">Create an account</a>.</p>
+</div>
+
+{% endblock %}
